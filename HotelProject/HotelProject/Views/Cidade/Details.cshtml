@@ -1,0 +1,36 @@
+﻿@model HotelProject.Models.cidade
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>cidade</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cidade_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cidade_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Descricao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descricao)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Estado)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Estado)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

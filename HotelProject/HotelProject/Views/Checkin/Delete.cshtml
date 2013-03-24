@@ -1,0 +1,67 @@
+﻿@model HotelProject.Models.checkin
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>checkin</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.checkin_Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.checkin_Id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cliente.Nome)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cliente.Nome)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.funcionario.Descricao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.funcionario.Descricao)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Data)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Data)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Previsao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Previsao)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Saida)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Saida)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Valor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Valor)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

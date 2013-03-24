@@ -1,0 +1,50 @@
+﻿@model HotelProject.Models.quarto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>quarto</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.quarto_Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.quarto_Id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.status_quarto.Descridao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.status_quarto.Descridao)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Numero)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Numero)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Descricao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descricao)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ValorDia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ValorDia)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,120 @@
+﻿@model HotelProject.Models.funcionario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>funcionario</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.funcionario_Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.funcionario_Id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Descricao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descricao)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cidade.Descricao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cidade.Descricao)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nome)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nome)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Telefone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telefone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cpf)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cpf)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Rg)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rg)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DtRegistro)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DtRegistro)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DtNascimento)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DtNascimento)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Sexo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sexo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Endereco)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Endereco)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Bairro)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Bairro)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Login)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Login)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Senha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Senha)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

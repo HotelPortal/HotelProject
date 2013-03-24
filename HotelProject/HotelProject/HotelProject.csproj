@@ -122,9 +122,28 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CheckinController.cs" />
+    <Compile Include="Controllers\CidadeController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
+    <Compile Include="Controllers\QuartoController.cs" />
+    <Compile Include="Controllers\StatusQuartoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\checkin.cs" />
+    <Compile Include="Models\cidade.cs" />
+    <Compile Include="Models\cliente.cs" />
+    <Compile Include="Models\funcionario.cs" />
+    <Compile Include="Models\HotelDBContext.cs" />
+    <Compile Include="Models\Mapping\checkinMap.cs" />
+    <Compile Include="Models\Mapping\cidadeMap.cs" />
+    <Compile Include="Models\Mapping\clienteMap.cs" />
+    <Compile Include="Models\Mapping\funcionarioMap.cs" />
+    <Compile Include="Models\Mapping\quartoMap.cs" />
+    <Compile Include="Models\Mapping\status_quartoMap.cs" />
+    <Compile Include="Models\quarto.cs" />
+    <Compile Include="Models\status_quarto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -211,11 +230,39 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Funcionario\Index.cshtml" />
+    <Content Include="Views\Funcionario\Details.cshtml" />
+    <Content Include="Views\Funcionario\Create.cshtml" />
+    <Content Include="Views\Funcionario\Edit.cshtml" />
+    <Content Include="Views\Funcionario\Delete.cshtml" />
+    <Content Include="Views\Checkin\Index.cshtml" />
+    <Content Include="Views\Checkin\Details.cshtml" />
+    <Content Include="Views\Checkin\Create.cshtml" />
+    <Content Include="Views\Checkin\Edit.cshtml" />
+    <Content Include="Views\Checkin\Delete.cshtml" />
+    <Content Include="Views\Cidade\Index.cshtml" />
+    <Content Include="Views\Cidade\Details.cshtml" />
+    <Content Include="Views\Cidade\Create.cshtml" />
+    <Content Include="Views\Cidade\Edit.cshtml" />
+    <Content Include="Views\Cidade\Delete.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Quarto\Index.cshtml" />
+    <Content Include="Views\Quarto\Details.cshtml" />
+    <Content Include="Views\Quarto\Create.cshtml" />
+    <Content Include="Views\Quarto\Edit.cshtml" />
+    <Content Include="Views\Quarto\Delete.cshtml" />
+    <Content Include="Views\StatusQuarto\Index.cshtml" />
+    <Content Include="Views\StatusQuarto\Details.cshtml" />
+    <Content Include="Views\StatusQuarto\Create.cshtml" />
+    <Content Include="Views\StatusQuarto\Edit.cshtml" />
+    <Content Include="Views\StatusQuarto\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

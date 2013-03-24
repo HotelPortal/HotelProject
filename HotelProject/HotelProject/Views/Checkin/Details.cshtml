@@ -1,0 +1,64 @@
+﻿@model HotelProject.Models.checkin
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>checkin</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.checkin_Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.checkin_Id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cliente.Nome)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cliente.Nome)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.funcionario.Descricao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.funcionario.Descricao)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Data)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Data)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Previsao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Previsao)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Saida)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Saida)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Valor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Valor)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
