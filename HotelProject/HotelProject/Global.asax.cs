@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using HotelProject.Models;
 
 namespace HotelProject
 {
@@ -16,6 +17,10 @@ namespace HotelProject
     {
         protected void Application_Start()
         {
+            var con = new HotelDBContext();
+
+            con.Database.CreateIfNotExists();
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
