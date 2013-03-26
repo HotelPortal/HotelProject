@@ -12,7 +12,7 @@ namespace HotelProject.Models.Mapping
 
             // Properties
             this.Property(t => t.quarto_Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             // Table & Column Mappings
             this.ToTable("quarto");

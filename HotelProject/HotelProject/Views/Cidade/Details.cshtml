@@ -1,37 +1,37 @@
 ﻿@model HotelProject.Models.cidade
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhe Cidade";
     Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Cidade detalhada</h2>
 
 <fieldset>
-    <legend>cidade</legend>
+    <legend></legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.cidade_id)
+        <strong>ID</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.cidade_id)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Descricao)
+        <strong>Descrição</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Descricao)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Estado)
+        <strong>Estado</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Estado)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id=Model.cidade_id }) |
+    @Html.ActionLink("Voltar para Lista", "Index")
 </p>

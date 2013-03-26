@@ -1,27 +1,28 @@
 ﻿@model HotelProject.Models.status_quarto
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Novo Status";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Novo Status</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>status_quarto</legend>
+        <legend></legend>
 
-        <div class="editor-label">
+        @*<div class="editor-label">
             @Html.LabelFor(model => model.status_Id)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.status_Id)
             @Html.ValidationMessageFor(model => model.status_Id)
-        </div>
+        </div>*@
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Descridao)
+            Descrição
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Descridao)
@@ -29,21 +30,21 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.FlAlugavel)
+            Alugável
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.FlAlugavel)
             @Html.ValidationMessageFor(model => model.FlAlugavel)
         </div>
-
+        <br/>
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Cadastrar"  class="btn btn-primary"/>
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para Lista", "Index")
 </div>
 
 @section Scripts {

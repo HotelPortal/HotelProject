@@ -1,36 +1,37 @@
 ﻿@model HotelProject.Models.status_quarto
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhe Status";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Status Detalhado</h2>
 
 <fieldset>
-    <legend>status_quarto</legend>
+    <legend></legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.status_Id)
+       <strong> ID</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.status_Id)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Descridao)
+       <strong> Descrição</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Descridao)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.FlAlugavel)
+        <strong> Alugável</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.FlAlugavel)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id=Model.status_Id  }) |
+    @Html.ActionLink("Voltar para Lista", "Index")
 </p>

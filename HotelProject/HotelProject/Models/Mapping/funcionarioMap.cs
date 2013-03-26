@@ -12,10 +12,10 @@ namespace HotelProject.Models.Mapping
 
             // Properties
             this.Property(t => t.funcionario_Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             this.Property(t => t.Descricao)
-                .IsRequired();
+                .IsOptional();
 
             // Table & Column Mappings
             this.ToTable("funcionario");

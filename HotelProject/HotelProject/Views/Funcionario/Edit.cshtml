@@ -1,43 +1,28 @@
 ﻿@model HotelProject.Models.funcionario
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar Funcionário";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Editar</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>funcionario</legend>
+        <legend></legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.funcionario_Id)
+           ID
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.funcionario_Id)
             @Html.ValidationMessageFor(model => model.funcionario_Id)
         </div>
-
+        
         <div class="editor-label">
-            @Html.LabelFor(model => model.Descricao)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Descricao)
-            @Html.ValidationMessageFor(model => model.Descricao)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.cidade_id, "cidade")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("cidade_id", String.Empty)
-            @Html.ValidationMessageFor(model => model.cidade_id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Nome)
+            Nome
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Nome)
@@ -45,15 +30,23 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Telefone)
+           E-mail
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        
+        <div class="editor-label">
+            Telefone
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Telefone)
             @Html.ValidationMessageFor(model => model.Telefone)
         </div>
-
+        
         <div class="editor-label">
-            @Html.LabelFor(model => model.Cpf)
+           CPF
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Cpf)
@@ -61,13 +54,21 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Rg)
+            RG
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Rg)
             @Html.ValidationMessageFor(model => model.Rg)
         </div>
-
+        
+        <div class="editor-label">
+          Data Nascimento
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DtNascimento)
+            @Html.ValidationMessageFor(model => model.DtNascimento)
+        </div>
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.DtRegistro)
         </div>
@@ -77,31 +78,15 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.DtNascimento)
+            Cidade
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DtNascimento)
-            @Html.ValidationMessageFor(model => model.DtNascimento)
+            @Html.DropDownList("cidade_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.cidade_id)
         </div>
-
+        
         <div class="editor-label">
-            @Html.LabelFor(model => model.Sexo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Sexo)
-            @Html.ValidationMessageFor(model => model.Sexo)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Email)
-            @Html.ValidationMessageFor(model => model.Email)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Endereco)
+            Endereço
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Endereco)
@@ -109,13 +94,13 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Bairro)
+            Bairro
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Bairro)
             @Html.ValidationMessageFor(model => model.Bairro)
         </div>
-
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.Login)
         </div>
@@ -132,8 +117,15 @@
             @Html.ValidationMessageFor(model => model.Senha)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sexo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Sexo)
+            @Html.ValidationMessageFor(model => model.Sexo)
+        </div>
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Save" class="btn btn-primary" />
         </p>
     </fieldset>
 }

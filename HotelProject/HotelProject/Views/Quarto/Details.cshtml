@@ -1,50 +1,51 @@
 ﻿@model HotelProject.Models.quarto
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes Quarto";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Quarto Detalhado</h2>
 
 <fieldset>
-    <legend>quarto</legend>
+    <legend></legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.quarto_Id)
+        <strong>ID</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.quarto_Id)
     </div>
-
+    
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.status_quarto.Descridao)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.status_quarto.Descridao)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Numero)
+       <strong> Número</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Numero)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Descricao)
+        <strong>Státus</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.status_quarto.Descridao)
+    </div>
+
+    <div class="display-label">
+       <strong> Descrição</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Descricao)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ValorDia)
+        <strong> Diária</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ValorDia)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Voltar para Lista", "Index")
 </p>

@@ -1,45 +1,46 @@
 ﻿@model HotelProject.Models.quarto
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Excluir Quarto";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Excluir</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Tem certeza que deseja excluir este item?</h3>
 <fieldset>
-    <legend>quarto</legend>
+    <legend></legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.quarto_Id)
+        <strong>ID</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.quarto_Id)
     </div>
-
+    
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.status_quarto.Descridao)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.status_quarto.Descridao)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Numero)
+       <strong> Número</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Numero)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Descricao)
+        <strong>Státus</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.status_quarto.Descridao)
+    </div>
+
+    <div class="display-label">
+       <strong> Descrição</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Descricao)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ValorDia)
+        <strong> Diária</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ValorDia)
@@ -47,7 +48,7 @@
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Deletar" class="btn btn-primary"/> |
+        @Html.ActionLink("Voltar para Lista", "Index")
     </p>
 }

@@ -1,99 +1,93 @@
 ﻿@model HotelProject.Models.cliente
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhe Cliente";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Cliente Detalhado</h2>
 
 <fieldset>
-    <legend>cliente</legend>
+    <legend></legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.cliente_id)
+        <strong>ID</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.cliente_id)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.cidade.Descricao)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.cidade.Descricao)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Nome)
+        <strong> @Html.DisplayNameFor(model => model.Nome)</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Nome)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Telefone)
+        <strong>Telefone</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Telefone)
     </div>
-
+   <div class="display-label">
+       <strong> E-mail</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Cpf)
+        <strong> CPF</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Cpf)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Rg)
+       <strong>RG</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Rg)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.DtRegistro)
+        <strong>Cidade</strong>
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.DtRegistro)
+        @Html.DisplayFor(model => model.cidade.Descricao)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.DtNascimento)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DtNascimento)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Sexo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Sexo)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Email)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Email)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Endereco)
+        <strong>Endereço</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Endereco)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Bairro)
+        <strong> Bairro</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Bairro)
     </div>
+
+    <div class="display-label">
+       <strong> Data Nascimento</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DtNascimento)
+    </div>
+    <div class="display-label">
+        <strong> Data Registro</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DtRegistro)
+    </div>
+    <div class="display-label">
+        <strong> Sexo</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sexo)
+    </div>
+
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new {  id=Model.cliente_id }) |
+    @Html.ActionLink("Voltar para Lista", "Index")
 </p>

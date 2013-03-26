@@ -3,44 +3,81 @@
 @using NavigationRoutes
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>@ViewBag.Title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="@Styles.Url("~/content/css")" rel="stylesheet"/>
-        @RenderSection("head", required: false)
-        @Html.Partial("_html5shiv")
-        @* favicons and touch icons go here *@
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="#" title="change in _bootstrapLayout.basic.cshtml">Application Name</a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            @Html.Navigation()
-                        </ul>
-                    </div>
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="@Styles.Url("~/content/css")" rel="stylesheet"/>
+    @RenderSection("head", required: false)
+    @Html.Partial("_html5shiv")
+    @* favicons and touch icons go here *@
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="~/home" title="change in _bootstrapLayout.basic.cshtml">Home</a>
+                <form class="navbar-search pull-right" >
+                    <input type="text" class="search-query" placeholder="Pesquisar Cliente" >
+                </form>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        @Html.Navigation()               
+                    </ul>
                 </div>
             </div>
-        </div>        
-        <div class="container">
-            @Html.Partial("_alerts")
-            @Html.Partial("_validationSummary")
-            @RenderBody()   
-            <hr>
-            <footer>
-                <p>&copy; Company @System.DateTime.Now.ToString("yyyy")</p>
-            </footer> 
         </div>
-         @Scripts.Render("~/js")
-         @RenderSection("Scripts", required: false)
-    </body>
+    </div>
+     
+    <div class="container-fluid">
+        
+        <div class="row-fluid">
+            <div class="span2">
+                <!--Sidebar content-->
+                
+                <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                  <li class="nav-header">Cadastros</li>
+                  <li class="active"><a href="~/Checkin/create">CheckIn</a></li>
+                  <li><a href="~/Cliente/create">Cliente</a></li>
+                  <li class="nav-header">Consultas</li>
+                  <li><a href="~/cidade">Cidade</a></li>
+                  <li><a href="~/cliente">Cliente</a></li>
+                  <li><a href="~/funcionario">Funcionário</a></li>
+                  <li><a href="~/quarto">Quarto</a></li>
+                  <li><a href="~/statusquarto">Status Quarto</a></li>
+                  <li class="nav-header">relatórios</li>
+                  <li><a href="#">Link</a></li>
+                  <li><a href="#">Link</a></li>
+                  <li><a href="#">Link</a></li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="span10">
+                <!--Body content-->
+                @Html.Partial("_alerts")
+                @Html.Partial("_validationSummary")
+                @RenderBody()
+
+            </div>
+       </div>
+
+        
+            
+        
+        <hr>
+        <footer>
+            <p>&copy; Portal Company @System.DateTime.Now.ToString("yyyy")</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/js")
+    @RenderSection("Scripts", required: false)
+</body>
 </html>
 

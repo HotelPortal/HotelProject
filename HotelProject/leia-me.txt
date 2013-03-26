@@ -1,0 +1,4 @@
+-arrumar nos bancos a primary key como identity na tabela quarto
+
+-arrumar nos bancos a primary key como identity na tabela funcionário
+-deletar ou deixa como nullable o atributo 'descrição' na tabela funcionário

@@ -1,27 +1,28 @@
 ﻿@model HotelProject.Models.quarto
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Novo Quarto";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Novo Quarto</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>quarto</legend>
+        <legend></legend>
 
-        <div class="editor-label">
+       @* <div class="editor-label">
             @Html.LabelFor(model => model.quarto_Id)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.quarto_Id)
             @Html.ValidationMessageFor(model => model.quarto_Id)
-        </div>
+        </div>*@
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.status_Id, "status_quarto")
+           Status
         </div>
         <div class="editor-field">
             @Html.DropDownList("status_Id", String.Empty)
@@ -29,7 +30,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Numero)
+            Número
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Numero)
@@ -37,7 +38,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Descricao)
+            Descrição
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Descricao)
@@ -45,7 +46,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ValorDia)
+            Diária
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ValorDia)
@@ -53,13 +54,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Cadastrar" class="btn btn-primary"/>
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para Lista", "Index")
 </div>
 
 @section Scripts {

@@ -1,28 +1,28 @@
 ﻿@model HotelProject.Models.cidade
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Nova Cidade";
     Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Nova Cidade</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>cidade</legend>
+        <legend></legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.cidade_id)
+        @*<div class="editor-label">
+            ID
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.cidade_id)
             @Html.ValidationMessageFor(model => model.cidade_id)
-        </div>
+        </div>*@
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Descricao)
+            Descrição
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Descricao)
@@ -30,7 +30,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Estado)
+            Estado
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Estado)
@@ -38,13 +38,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Cadastrar" class="btn btn-primary"/>
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para lista", "Index")
 </div>
 
 @section Scripts {

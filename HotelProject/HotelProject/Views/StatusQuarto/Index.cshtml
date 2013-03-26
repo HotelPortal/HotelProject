@@ -1,24 +1,25 @@
 ﻿@model IEnumerable<HotelProject.Models.status_quarto>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Status Quarto";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Status</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo Status +", "Create")
 </p>
-<table>
+<table class="table table-striped table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.status_Id)
+            #
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descridao)
+            Descrição
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FlAlugavel)
+            Alugável
         </th>
         <th></th>
     </tr>
@@ -35,9 +36,22 @@
             @Html.DisplayFor(modelItem => item.FlAlugavel)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @*@Html.ActionLink("Editar", "Edit", new { id=item.status_Id }) |
+            @Html.ActionLink("Detalhar", "Details", new { id=item.status_Id }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.status_Id })*@
+            
+            <div class="btn-group">
+                    <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#">
+                        Ação
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Editar", "Edit", new {  id=item.status_Id })</li>
+                        <li>@Html.ActionLink("Detalhar", "Details", new { id=item.status_Id  })</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Deletar", "Delete", new {  id=item.status_Id })</li>
+                    </ul>
+             </div>
         </td>
     </tr>
 }
