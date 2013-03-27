@@ -4,21 +4,84 @@
     ViewBag.Title = "Create";
 }
 
+<script type="text/javascript">
+    var Items = new Object();
+    Items.quartos = new Array();
+   
+
+
+    function salvar() {
+
+        $.ajax({
+            url: '@Url.Action("Create")',
+            data: { Items: getItems() },
+            dataType: 'json',
+            type: 'POST',
+            success: function (result) {
+                if (result) {
+                    window.location.replace('@Url.Action("Index")');
+                }
+                else {
+                    alert('Failure');
+                }
+            }
+        });
+
+       
+
+
+    }
+
+    // Remove um endereço da grid
+    function removerQuarto(key) {
+
+        $("#GridQuarto").load('@Url.Action("RemoverQuarto")',
+                {
+                    form: getItems(),
+                    quartoid: key
+                });
+    }
+
+
+    function adicionarQuarto() {
+
+        $("#GridQuarto").load('@Url.Action("AdicionarQuarto")',
+        {
+            form: getItems(),
+            quartoid: $("#quarto_id").val(),
+        });
+
+    }
+
+
+    function getItems() {                    
+
+        Items = new Object();
+
+
+        Items.cliente_id = $("#cliente_id").val();
+        Items.Previsao = $("#dataPrevisao").val();
+        
+        Items.quartos = new Array();
+        
+        $("input[id ='quarto']").each(function () {
+            Items.quartos.push(new Object({ quarto_Id: $(this).attr("quartoId"), Descricao: $(this).attr("Descricao"), Numero: $(this).attr("Numero"), ValorDia: $(this).attr("ValorDia") }));
+        });
+
+        return JSON.stringify(Items);
+    }
+</script>
+
+
 <h2>Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>checkin</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.checkin_Id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.checkin_Id)
-            @Html.ValidationMessageFor(model => model.checkin_Id)
-        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.cliente_id, "cliente")
@@ -29,45 +92,31 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.funcionario_Id, "funcionario")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("funcionario_Id", String.Empty)
-            @Html.ValidationMessageFor(model => model.funcionario_Id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Data)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Data)
-            @Html.ValidationMessageFor(model => model.Data)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.Previsao)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Previsao)
+            @Html.EditorFor(model => model.Previsao, "number", "dataPrevisao")
             @Html.ValidationMessageFor(model => model.Previsao)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Saida)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Saida)
-            @Html.ValidationMessageFor(model => model.Saida)
-        </div>
+        <fieldset>
+            <legend>Quartos</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Valor)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Valor)
-            @Html.ValidationMessageFor(model => model.Valor)
-        </div>
+            <div class="editor-field">
+                @Html.DropDownList("quarto_id", String.Empty)
+            </div>
+            <p>
+                <input type="button" value="Adicionar" onclick="adicionarQuarto()" />
+            </p>
 
+            <div id="GridQuarto">@{ Html.RenderPartial("_GridQuarto", Model); }</div>
+
+        </fieldset>
+
+        <p>
+            <input type="button" value="Salvar" onclick="salvar()" />
+        </p>
+        
         <p>
             <input type="submit" value="Create" />
         </p>
