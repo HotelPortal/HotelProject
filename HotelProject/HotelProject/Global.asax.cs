@@ -21,6 +21,20 @@ namespace HotelProject
 
             con.Database.CreateIfNotExists();
 
+            
+
+            var c = new checkin();
+
+            c.checkin_Id = 1;
+            c.Valor = 1213;
+            c.Previsao = 31423;
+
+
+            con.checkins.Add(c);
+
+            con.SaveChanges();
+
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

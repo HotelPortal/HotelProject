@@ -6,12 +6,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HotelProject.Models;
+using Newtonsoft.Json;
 
 namespace HotelProject.Controllers
 {
     public class CheckinController : Controller
     {
         private HotelDBContext db = new HotelDBContext();
+
+        private List<quarto> quartos = new List<quarto>();
 
         //
         // GET: /Checkin/
@@ -42,6 +45,7 @@ namespace HotelProject.Controllers
         {
             ViewBag.cliente_id = new SelectList(db.clientes, "cliente_id", "Nome");
             ViewBag.funcionario_Id = new SelectList(db.funcionarios, "funcionario_Id", "Descricao");
+            ViewBag.quarto_Id = new SelectList(db.quartos, "quarto_id", "Descricao");
             return View();
         }
 
@@ -49,13 +53,52 @@ namespace HotelProject.Controllers
         // POST: /Checkin/Create
 
         [HttpPost]
-        public ActionResult Create(checkin checkin)
+        public ActionResult Create(String Items)
         {
+
+            checkin checkin_form = JsonConvert.DeserializeObject<checkin>(Items);
+
+            var checkin = new checkin();
+
+            //checkin.Previsao = checkin_form.Previsao;
+            db.checkins.Add(checkin);
+            db.SaveChanges();
+
+
+            cliente cli = db.clientes.Find(checkin_form.cliente_id);
+
+            cli.checkins.Add(checkin);
+            checkin.cliente_id = cli.cliente_id;
+
+            db.Entry(cli).State = EntityState.Modified;
+            db.Entry(checkin).State = EntityState.Modified;
+
+            db.SaveChanges();
+
+            
+
+            
+                
+
+           
+
+
+
+
+
             if (ModelState.IsValid)
             {
-                db.checkins.Add(checkin);
+                foreach (var quarto in checkin_form.quartos)
+                {
+                    var q = db.quartos.Find(quarto.quarto_Id);
+                    q.checkins.Add(checkin);
+
+                    db.Entry(q).State = EntityState.Modified;
+                }
+
+
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect("Index");
             }
 
             ViewBag.cliente_id = new SelectList(db.clientes, "cliente_id", "Nome", checkin.cliente_id);
@@ -124,6 +167,64 @@ namespace HotelProject.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+
+
+        public ActionResult AdicionarQuarto(string form, int quartoid)
+        {
+            var model = JsonConvert.DeserializeObject<checkin>(form);
+            var quar = db.quartos.Find(quartoid);
+            model.quartos.Add(quar);
+            return PartialView("_GridQuarto", model);
+        }
+
+
+        public ActionResult RemoverQuarto(string form, int quartoid)
+        {
+
+            var model = JsonConvert.DeserializeObject<checkin>(form);
+
+            quarto quarto_remover = null;
+
+            foreach (var q in model.quartos)
+            {
+                System.Console.Write(quartoid + " " + q.quarto_Id);
+
+                if (quartoid == q.quarto_Id)
+                {
+
+                    quarto_remover = q;
+                    quartos.Add(q);
+                    break;
+                }
+
+            }
+
+     
+            model.quartos.Remove(quarto_remover);
+            
+
+           // model.quartos = quartos;
+
+            return PartialView("_GridQuarto", model);
+        }
+
+
+        public ActionResult Save(string Items)
+        {
+            checkin model = JsonConvert.DeserializeObject<checkin>(Items);
+
+            model.Data = DateTime.Today;
+
+
+
+
+                db.checkins.Add(model);
+                db.SaveChanges();
+                return Redirect("Index");
+            
+       
         }
     }
 }
