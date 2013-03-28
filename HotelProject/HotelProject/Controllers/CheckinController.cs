@@ -53,57 +53,26 @@ namespace HotelProject.Controllers
         // POST: /Checkin/Create
 
         [HttpPost]
-        public ActionResult Create(String Items)
+        public JsonResult Create(String Items)
         {
 
             checkin checkin_form = JsonConvert.DeserializeObject<checkin>(Items);
 
-            var checkin = new checkin();
+            checkin_form.Data = DateTime.Now;
+            quartos = new List<quarto>();
 
-            //checkin.Previsao = checkin_form.Previsao;
-            db.checkins.Add(checkin);
-            db.SaveChanges();
-
-
-            cliente cli = db.clientes.Find(checkin_form.cliente_id);
-
-            cli.checkins.Add(checkin);
-            checkin.cliente_id = cli.cliente_id;
-
-            db.Entry(cli).State = EntityState.Modified;
-            db.Entry(checkin).State = EntityState.Modified;
-
-            db.SaveChanges();
-
-            
-
-            
-                
-
-           
-
-
-
-
-
-            if (ModelState.IsValid)
+            float valor = 0;
+            foreach (var quarto in checkin_form.quartos)
             {
-                foreach (var quarto in checkin_form.quartos)
-                {
-                    var q = db.quartos.Find(quarto.quarto_Id);
-                    q.checkins.Add(checkin);
-
-                    db.Entry(q).State = EntityState.Modified;
-                }
-
-
-                db.SaveChanges();
-                return Redirect("Index");
+                db.Entry(quarto).State = EntityState.Unchanged;
+                valor += quarto.ValorDia * float.Parse(checkin_form.Previsao.ToString());
             }
+            checkin_form.Valor = valor;
 
-            ViewBag.cliente_id = new SelectList(db.clientes, "cliente_id", "Nome", checkin.cliente_id);
-            ViewBag.funcionario_Id = new SelectList(db.funcionarios, "funcionario_Id", "Descricao", checkin.funcionario_Id);
-            return View(checkin);
+            db.checkins.Add(checkin_form);
+            db.SaveChanges();
+            return Json(true);
+           
         }
 
         //
@@ -118,6 +87,7 @@ namespace HotelProject.Controllers
             }
             ViewBag.cliente_id = new SelectList(db.clientes, "cliente_id", "Nome", checkin.cliente_id);
             ViewBag.funcionario_Id = new SelectList(db.funcionarios, "funcionario_Id", "Descricao", checkin.funcionario_Id);
+            ViewBag.quarto_Id = new SelectList(db.quartos, "quarto_id", "Descricao");
             return View(checkin);
         }
 
@@ -125,17 +95,18 @@ namespace HotelProject.Controllers
         // POST: /Checkin/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(checkin checkin)
+        public JsonResult Edit(string Items)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(checkin).State = EntityState.Modified;
+                checkin checkin_form = JsonConvert.DeserializeObject<checkin>(Items);
+
+                db.Entry(checkin_form).State = EntityState.Modified;
+                db.checkins.Add(checkin_form);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
-            ViewBag.cliente_id = new SelectList(db.clientes, "cliente_id", "Nome", checkin.cliente_id);
-            ViewBag.funcionario_Id = new SelectList(db.funcionarios, "funcionario_Id", "Descricao", checkin.funcionario_Id);
-            return View(checkin);
+            
+            return Json(true);
         }
 
         //
@@ -176,6 +147,15 @@ namespace HotelProject.Controllers
             var model = JsonConvert.DeserializeObject<checkin>(form);
             var quar = db.quartos.Find(quartoid);
             model.quartos.Add(quar);
+
+            float valor = 0;
+            foreach (var quarto in model.quartos)
+            {
+                db.Entry(quarto).State = EntityState.Unchanged;
+                valor += quarto.ValorDia * float.Parse(model.Previsao.ToString());
+            }
+            model.Valor = valor;
+
             return PartialView("_GridQuarto", model);
         }
 
@@ -208,23 +188,6 @@ namespace HotelProject.Controllers
            // model.quartos = quartos;
 
             return PartialView("_GridQuarto", model);
-        }
-
-
-        public ActionResult Save(string Items)
-        {
-            checkin model = JsonConvert.DeserializeObject<checkin>(Items);
-
-            model.Data = DateTime.Today;
-
-
-
-
-                db.checkins.Add(model);
-                db.SaveChanges();
-                return Redirect("Index");
-            
-       
         }
     }
 }

@@ -1,24 +1,38 @@
 ﻿@model HotelProject.Models.checkin
 
+
+
 <table>
     <tr>
         <th colspan='2'>Descricao</th>
         <th>Número</th>
-        <th colspan='2'>Valor</th>
+        <th>Valor</th>
+        <th colspan='2'>Ações</th>
     </tr>
-    
-    
-@if (Model!=null){
-    foreach (var quarto in Model.quartos)
-{
-    <tr>
-        <td>@Html.Hidden("quarto", string.Empty, new { @quartoId = quarto.quarto_Id, @Descricao = quarto.Descricao, @Numero = quarto.Numero, @ValorDia = quarto.ValorDia})</td>
-        <td>@quarto.quarto_Id</td>
-        <td>@quarto.Descricao</td>
-        <td>@quarto.Numero</td>
-        <td>@quarto.ValorDia</td>
-        <td><a href='javascript:void(0)' id='remover' onclick="javascript:removerQuarto(@(quarto.quarto_Id));">Remover</a></td>
-    </tr>
-}
-}
+
+
+    @if (Model != null)
+    {
+        foreach (var quarto in Model.quartos)
+        {
+        <tr>
+            <td>@Html.Hidden("quarto", string.Empty, new { @quartoId = quarto.quarto_Id, @Descricao = quarto.Descricao, @Numero = quarto.Numero, @ValorDia = quarto.ValorDia })</td>
+            <td>@quarto.quarto_Id</td>
+            <td>@quarto.Descricao</td>
+            <td>@quarto.Numero</td>
+            <td>@quarto.ValorDia</td>
+            <td><a href='javascript:void(0)' id='remover' onclick="javascript:removerQuarto(@(quarto.quarto_Id));">Remover</a></td>
+        </tr>
+        }
+    }
 </table>
+
+<br />
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Valor)
+</div>
+<div class="editor-field">
+    @Html.DisplayFor(model => model.Valor)
+</div>
+<br />

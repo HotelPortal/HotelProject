@@ -59,6 +59,29 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Valor)
     </div>
+    
+    <div id="GridQuarto">
+        <table>
+            <tr>
+                <th colspan='2'>Descricao</th>
+                <th>Número</th>
+                <th colspan='2'>Valor</th>
+            </tr>
+            @if (Model != null)
+            {
+                foreach (var quarto in Model.quartos)
+                {
+                <tr>
+                    <td>@quarto.quarto_Id</td>
+                    <td>@quarto.Descricao</td>
+                    <td>@quarto.Numero</td>
+                    <td>@quarto.ValorDia</td>
+                </tr>
+                }
+            }
+        </table>
+    </div>
+
 </fieldset>
 @using (Html.BeginForm()) {
     <p>

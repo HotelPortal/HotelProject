@@ -11,52 +11,75 @@
     <legend>checkin</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.checkin_Id)
+        @Html.DisplayNameFor(model => model.checkin_Id)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.checkin_Id)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.cliente.Nome)
+        @Html.DisplayNameFor(model => model.cliente.Nome)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.cliente.Nome)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.funcionario.Descricao)
+        @Html.DisplayNameFor(model => model.funcionario.Descricao)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.funcionario.Descricao)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Data)
+        @Html.DisplayNameFor(model => model.Data)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Data)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Previsao)
+        @Html.DisplayNameFor(model => model.Previsao)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Previsao)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Saida)
+        @Html.DisplayNameFor(model => model.Saida)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Saida)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Valor)
+        @Html.DisplayNameFor(model => model.Valor)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Valor)
+    </div>
+
+
+    <div id="GridQuarto">
+        <table>
+            <tr>
+                <th colspan='2'>Descricao</th>
+                <th>Número</th>
+                <th colspan='2'>Valor</th>
+            </tr>
+            @if (Model != null)
+            {
+                foreach (var quarto in Model.quartos)
+                {
+                <tr>
+                    <td>@quarto.quarto_Id</td>
+                    <td>@quarto.Descricao</td>
+                    <td>@quarto.Numero</td>
+                    <td>@quarto.ValorDia</td>
+                </tr>
+                }
+            }
+        </table>
     </div>
 </fieldset>
 <p>
