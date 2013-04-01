@@ -11,6 +11,9 @@ namespace HotelProject.Models.Mapping
             this.HasKey(t => t.checkin_Id);
 
             // Properties
+
+            this.Property(t => t.Previsao).IsRequired();
+
             // Table & Column Mappings
             this.ToTable("checkin");
             this.Property(t => t.checkin_Id).HasColumnName("checkin_Id");

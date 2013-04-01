@@ -21,7 +21,8 @@ namespace HotelProject.Controllers
 
         public ActionResult Index()
         {
-            var checkins = db.checkins.Include(c => c.cliente).Include(c => c.funcionario);
+            //var checkins = db.checkins.Include(c => c.cliente).Include(c => c.funcionario);
+            var checkins = db.checkins.ToList();
             return View(checkins.ToList());
         }
 
@@ -145,18 +146,25 @@ namespace HotelProject.Controllers
         public ActionResult AdicionarQuarto(string form, int quartoid)
         {
             var model = JsonConvert.DeserializeObject<checkin>(form);
-            var quar = db.quartos.Find(quartoid);
-            model.quartos.Add(quar);
 
-            float valor = 0;
-            foreach (var quarto in model.quartos)
+            if (ModelState.IsValid)
             {
-                db.Entry(quarto).State = EntityState.Unchanged;
-                valor += quarto.ValorDia * float.Parse(model.Previsao.ToString());
-            }
-            model.Valor = valor;
+      
+                var quar = db.quartos.Find(quartoid);
+                model.quartos.Add(quar);
 
-            return PartialView("_GridQuarto", model);
+                float valor = 0;
+                foreach (var quarto in model.quartos)
+                {
+                    db.Entry(quarto).State = EntityState.Unchanged;
+                    valor += quarto.ValorDia*float.Parse(model.Previsao.ToString());
+                }
+                model.Valor = valor;
+
+            }
+        
+
+                 return PartialView("_GridQuarto", model);
         }
 
 
