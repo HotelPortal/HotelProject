@@ -35,35 +35,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.checkin_Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cliente.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.funcionario.Descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Previsao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Saida)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Valor)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.checkin_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cliente.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.funcionario.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Previsao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Saida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 </table>
+
+<h3>Relatórios</h3>
+
+@Html.ActionLink("Relatório de Check-ins", "Modelo", "Relatorio")
+
