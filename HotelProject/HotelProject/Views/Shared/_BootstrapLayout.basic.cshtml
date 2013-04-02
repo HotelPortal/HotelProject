@@ -22,15 +22,24 @@
                     <span class="icon-bar"></span>
                 </a>
                 <a class="brand" href="~/home" title="change in _bootstrapLayout.basic.cshtml">Home</a>
+<<<<<<< HEAD
                 
                 @using (Html.BeginForm("Busca", "Cliente", FormMethod.Post, new { @class = "navbar-search pull-right" }))
                 {
                     <input id="nome" name="nome"  type="text" class="search-query" placeholder="Pesquisar Cliente" >
 
                 }
+=======
+                <div class="btn btn-inverse pull-right">
+                    @Html.ActionLink("Log Out","LogOff", "Conta")
+                </div>            
+                <form class="navbar-search pull-right" >
+                    <input type="text" class="search-query" placeholder="Pesquisar Cliente" >
+                </form> 
+>>>>>>> origin/junto-certo-parte-tiago
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        @Html.Navigation()               
+                        @Html.Navigation()              
                     </ul>
                 </div>
             </div>
@@ -51,18 +60,13 @@
                   <li class="nav-header">Consultas</li>
                   <li><a href="~/cidade">Cidade</a></li>
                   <li><a href="~/cliente">Cliente</a></li>
+                  <li><a href="~/checkin">CheckIn</a></li>
                   <li><a href="~/funcionario">Funcionário</a></li>
                   <li><a href="~/quarto">Quarto</a></li>
                   <li><a href="~/statusquarto">Status Quarto</a></li>
                   <li class="nav-header">relatórios</li>
-<<<<<<< HEAD
                   <li><a href="~/Relatorio/Quartos">Quartos</a></li>
                   <li><a href="~/Relatorio/Modelo">CheckIns</a></li>
-=======
-                  <li>@Html.ActionLink("Sair","LogOff", "Conta")</li>
-                  <li><a href="#">Link</a></li>
->>>>>>> origin/Tudo-Junto!!
-                  <li><a href="#">Link</a></li>
                 </ul>
               </div>
 

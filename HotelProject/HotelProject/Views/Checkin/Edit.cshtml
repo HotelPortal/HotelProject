@@ -1,15 +1,20 @@
 ﻿@model HotelProject.Models.checkin
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar CheckIn";
     Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
 <script type="text/javascript">
     var Items = new Object();
     Items.quartos = new Array();
+<<<<<<< HEAD
 
    
+=======
+    
+
+>>>>>>> origin/junto-certo-parte-tiago
 
     function salvar() {
 
@@ -68,7 +73,7 @@
     }
 </script>
 
-<h2>Edit</h2>
+<h2>Editar</h2>
 
 @using (Html.BeginForm())
 {
@@ -79,28 +84,62 @@
     @Html.Hidden("cliente_id", Model.cliente_id)
 
     <fieldset>
-        <legend>checkin</legend>
+        <legend></legend>
 
         <div class="editor-label">
+<<<<<<< HEAD
            Nome :
+=======
+            ID
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.checkin_Id)
+            @Html.ValidationMessageFor(model => model.checkin_Id)
+        </div>
+
+        <div class="editor-label">
+            Cliente
+>>>>>>> origin/junto-certo-parte-tiago
         </div>
         <div class="editor-field">
             @Html.Label(Model.cliente.Nome)
         </div>
+<<<<<<< HEAD
+=======
+
         <div class="editor-label">
-            @Html.LabelFor(model => model.Data)
+            Funcionário
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("funcionario_Id", String.Empty)
+            @Html.ValidationMessageFor(model => model.funcionario_Id)
+        </div>
+
+>>>>>>> origin/junto-certo-parte-tiago
+        <div class="editor-label">
+           Data CheckIn
         </div>
         <div class="editor-field">
             @Html.Label(Model.Data.ToString())
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Previsao)
+            Previsão de Dias
         </div>
         <div class="editor-field">
             @Html.Label(Model.Previsao.ToString())
         </div>
 
+<<<<<<< HEAD
+=======
+        <div class="editor-label">
+            Data CheckOut
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Saida)
+            @Html.ValidationMessageFor(model => model.Saida)
+        </div>
+>>>>>>> origin/junto-certo-parte-tiago
 
         <fieldset>
             <legend>Quartos</legend>
@@ -109,7 +148,7 @@
                 @Html.DropDownList("quarto_id", String.Empty)
             </div>
             <p>
-                <input type="button" value="Adicionar" onclick="adicionarQuarto()" />
+                <input class="btn btn-primary btn-small" type="button" value="Adicionar" onclick="adicionarQuarto()" />
             </p>
 
             <div id="GridQuarto">
@@ -123,7 +162,7 @@
 
 
         <p>
-            <input type="button" value="Salvar" onclick="salvar()" />
+            <input class="btn btn-primary" type="button" value="Salvar" onclick="salvar()" />
         </p>
 
 
@@ -131,7 +170,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para Lista", "Index")
 </div>
 
 @section Scripts {
