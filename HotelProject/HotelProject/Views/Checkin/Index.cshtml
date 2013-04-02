@@ -64,10 +64,18 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Editar", "Edit", new {  id=item.checkin_Id})</li>
+                 
                         <li>@Html.ActionLink("Detalhar", "Details", new { id=item.checkin_Id })</li>
                         <li class="divider"></li>
-                        <li>@Html.ActionLink("Deletar", "Delete", new {  id=item.checkin_Id })</li>
+                  
+                        @{
+                          if (item.Saida == null)
+                          {
+                              <li>@Html.ActionLink("CheckOut", "ChechOut", new {  id=item.checkin_Id })</li>
+                          }
+                             
+                        }
+
                     </ul>
              </div>
         </td>

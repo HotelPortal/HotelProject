@@ -9,7 +9,7 @@
     var Items = new Object();
     Items.quartos = new Array();
 
-
+   
 
     function salvar() {
 
@@ -35,10 +35,9 @@
                 });
         }
 
+    function adicionarQuarto() {
 
-        function adicionarQuarto() {
-
-            $("#GridQuarto").load('@Url.Action("AdicionarQuarto")',
+        $("#GridQuarto").load('@Url.Action("AdicionarQuarto")',
         {
             form: getItems(),
             quartoid: $("#quarto_id").val(),
@@ -46,23 +45,27 @@
 
         }
 
-
-        function getItems() {
-
-            Items = new Object();
+    
+    
 
 
-            Items.cliente_id = $("#cliente_id").val();
-            Items.Previsao = $("#dataPrevisao").val();
+    function getItems() {
 
-            Items.quartos = new Array();
+        Items = new Object();
 
-            $("input[id ='quarto']").each(function () {
-                Items.quartos.push(new Object({ quarto_Id: $(this).attr("quartoId"), Descricao: $(this).attr("Descricao"), Numero: $(this).attr("Numero"), ValorDia: $(this).attr("ValorDia") }));
-            });
 
-            return JSON.stringify(Items);
-        }
+        Items.cliente_id = $("#cliente_id").val();
+        Items.Previsao = $("#dataPrevisao").val();
+        Items.checkin_id = $("#checkin_Id").val();
+        
+        Items.quartos = new Array();
+
+        $("input[id ='quarto']").each(function () {
+            Items.quartos.push(new Object({ quarto_Id: $(this).attr("quartoId"), Descricao: $(this).attr("Descricao"), Numero: $(this).attr("Numero"), ValorDia: $(this).attr("ValorDia") }));
+        });
+
+        return JSON.stringify(Items);
+    }
 </script>
 
 <h2>Edit</h2>
@@ -71,56 +74,33 @@
 {
     @Html.ValidationSummary(true)
 
+     @Html.Hidden("checkin_Id", Model.checkin_Id)
+     @Html.Hidden("dataPrevisao", Model.Previsao)
+    @Html.Hidden("cliente_id", Model.cliente_id)
+
     <fieldset>
         <legend>checkin</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.checkin_Id)
+           Nome :
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.checkin_Id)
-            @Html.ValidationMessageFor(model => model.checkin_Id)
+            @Html.Label(Model.cliente.Nome)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.cliente_id, "cliente")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("cliente_id", String.Empty)
-            @Html.ValidationMessageFor(model => model.cliente_id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.funcionario_Id, "funcionario")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("funcionario_Id", String.Empty)
-            @Html.ValidationMessageFor(model => model.funcionario_Id)
-        </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Data)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Data)
-            @Html.ValidationMessageFor(model => model.Data)
+            @Html.Label(Model.Data.ToString())
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Previsao)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Previsao)
-            @Html.ValidationMessageFor(model => model.Previsao)
+            @Html.Label(Model.Previsao.ToString())
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Saida)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Saida)
-            @Html.ValidationMessageFor(model => model.Saida)
-        </div>
 
         <fieldset>
             <legend>Quartos</legend>
@@ -137,21 +117,15 @@
 
                 <br />
 
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.Valor)
-                </div>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.Valor)
-                    @Html.ValidationMessageFor(model => model.Valor)
-                </div>
-
             </div>
 
         </fieldset>
 
+
         <p>
             <input type="button" value="Salvar" onclick="salvar()" />
         </p>
+
 
     </fieldset>
 }

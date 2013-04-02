@@ -53,6 +53,9 @@ namespace HotelProject.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                cliente.DtRegistro = DateTime.Now;
+
                 db.clientes.Add(cliente);
                 db.SaveChanges();
                 return RedirectToAction("Index");

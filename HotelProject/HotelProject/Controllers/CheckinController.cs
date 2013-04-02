@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -49,7 +50,7 @@ namespace HotelProject.Controllers
         {
             ViewBag.cliente_id = new SelectList(db.clientes, "cliente_id", "Nome");
             ViewBag.funcionario_Id = new SelectList(db.funcionarios, "funcionario_Id", "Descricao");
-            ViewBag.quarto_Id = new SelectList(db.quartos, "quarto_id", "Descricao");
+            ViewBag.quarto_Id = new SelectList(db.quartos.Where(c => c.status_quarto.FlAlugavel.Equals(true)), "quarto_id", "Descricao");
             return View();
         }
 
@@ -62,19 +63,44 @@ namespace HotelProject.Controllers
 
             checkin checkin_form = JsonConvert.DeserializeObject<checkin>(Items);
 
+            var login = System.Web.HttpContext.Current.User.Identity.Name;
+
+            var funcionariologado = db.funcionarios.Single(c => c.Login == login);
+
+            db.Entry(funcionariologado).State = EntityState.Unchanged;
+
+            checkin_form.funcionario_Id = funcionariologado.funcionario_Id;
+
             checkin_form.Data = DateTime.Now;
             quartos = new List<quarto>();
 
             float valor = 0;
             foreach (var quarto in checkin_form.quartos)
             {
+
                 db.Entry(quarto).State = EntityState.Unchanged;
+
                 valor += quarto.ValorDia * float.Parse(checkin_form.Previsao.ToString());
             }
             checkin_form.Valor = valor;
 
             db.checkins.Add(checkin_form);
+
             db.SaveChanges();
+
+
+            foreach (var quarto in checkin_form.quartos)
+            {
+
+                quarto.status_quarto = db.status_quarto.Single(c => c.FlAlugavel.Equals(false));
+
+                db.Entry(quarto).State = EntityState.Modified;
+
+                valor += quarto.ValorDia * float.Parse(checkin_form.Previsao.ToString());
+            }
+
+            db.SaveChanges();
+
             return Json(true);
            
         }
@@ -103,10 +129,22 @@ namespace HotelProject.Controllers
         {
             if (ModelState.IsValid)
             {
+
+
                 checkin checkin_form = JsonConvert.DeserializeObject<checkin>(Items);
 
-                db.Entry(checkin_form).State = EntityState.Modified;
-                db.checkins.Add(checkin_form);
+                var checkin = db.checkins.Find(checkin_form.checkin_Id);
+
+                checkin.quartos = new Collection<quarto>();
+
+                foreach (var quarto in checkin_form.quartos)
+                {
+                    db.Entry(quarto).State = EntityState.Unchanged;
+                    checkin.quartos.Add(quarto);
+                }
+
+                db.Entry(checkin).State = EntityState.Modified;
+    
                 db.SaveChanges();
             }
             
@@ -125,6 +163,42 @@ namespace HotelProject.Controllers
             }
             return View(checkin);
         }
+
+
+        //
+        // GET: /Checkin/ChechOut/5
+
+        public ActionResult ChechOut(long id = 0)
+        {
+            checkin checkin = db.checkins.Find(id);
+            if (checkin != null)
+            {
+                checkin.Saida = DateTime.Now;
+
+                db.Entry(checkin).State = EntityState.Modified;
+
+                db.SaveChanges();
+
+
+                foreach (var quarto in checkin.quartos)
+                {
+
+                    quarto.status_quarto = db.status_quarto.Single(c => c.FlAlugavel.Equals(true));
+
+                    db.Entry(quarto).State = EntityState.Modified;
+
+
+                }
+
+                db.SaveChanges();
+
+            }
+            return RedirectToAction("Index");
+        }
+
+
+
+
 
         //
         // POST: /Checkin/Delete/5
@@ -149,6 +223,8 @@ namespace HotelProject.Controllers
         public ActionResult AdicionarQuarto(string form, int quartoid)
         {
             var model = JsonConvert.DeserializeObject<checkin>(form);
+
+
 
             if (ModelState.IsValid)
             {
