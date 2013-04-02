@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<HotelProject.Models.quarto>
 @{
-   Layout = null;
+    ViewBag.Title = "Relatório de Quartos";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,53 +12,57 @@
     <!-- css -->
 	<link href="http://rotativaw7.apphb.com/Content/estilos-relatorio.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
-    <div id="container">
-        <div id="cabecalho">
-            <div id="nome">
-                <h1>RELATÓRIO DE QUARTOS DISPONÍVEIS</h1>
+    <body>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div id="container">
+            <div id="cabecalho">
+                <div id="nome">
+                    <h1>RELATÓRIO DE QUARTOS DISPONÍVEIS</h1>
+                </div>
+                <div id="unidade">
+                    <h2>HOTEL XXX</h2>
+                    <h3>MEDIANEIRA - PR</h3>
+                </div>
             </div>
-            <div id="unidade">
-                <h2>HOTEL XXX</h2>
-                <h3>MEDIANEIRA - PR</h3>
-            </div>
-        </div>
-        <div id="corpo">
-            <div class="linha">
-                <p>
-                    FUNCIONÁRIO:<br />
-                    <span class="bold"></span>
-                </p>
-            </div>
-            <div class="linha">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>QUARTO ID</th>
-                            <th>DESCRIÇÃO</th>
-                            <th>NUMERO</th>
-                            <th>VALOR DIARIA</th>
-                            <th>STATUS DO QUARTO</th>
-                        </tr>
-                    </thead>
-                    @foreach (var item in Model)
-                    {
-                        <tbody>
-                            <tr class="odd">
-                                <td class="bold">@Html.DisplayFor(modelItem => item.quarto_Id)</td>
-                                <td class="bold">@Html.DisplayFor(modelItem => item.Descricao)</td>
-                                <td class="bold">@Html.DisplayFor(modelItem => item.Numero)</td>
-                                <td class="bold">@Html.DisplayFor(modelItem => item.ValorDia)</td>
-                                <td class="bold">@Html.DisplayFor(modelItem => item.status_quarto.Descridao)</td>
+            <div id="corpo">
+                <div class="linha">
+                    <p>
+                        FUNCIONÁRIO:<br />
+                        <span class="bold"></span>
+                    </p>
+                </div>
+                <div class="linha">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>QUARTO ID</th>
+                                <th>DESCRIÇÃO</th>
+                                <th>NUMERO</th>
+                                <th>VALOR DIARIA</th>
+                                <th>STATUS DO QUARTO</th>
                             </tr>
-                        </tbody>
-                    }
-                </table>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr class="odd">
+                                    <td class="bold">@Html.DisplayFor(modelItem => item.quarto_Id)</td>
+                                    <td class="bold">@Html.DisplayFor(modelItem => item.Descricao)</td>
+                                    <td class="bold">@Html.DisplayFor(modelItem => item.Numero)</td>
+                                    <td class="bold">@Html.DisplayFor(modelItem => item.ValorDia)</td>
+                                    <td class="bold">@Html.DisplayFor(modelItem => item.status_quarto.Descridao)</td>
+                                </tr>
+                            </tbody>
+                        }
+                    </table>
+                </div>
+            </div>
+            <div id="rodape">
+                <p>Funcionario: <span></span> Emitido: @System.DateTime.Now.ToString() hotelxxx.com</p>
             </div>
         </div>
-        <div id="rodape">
-            <p>Funcionario: <span></span> Emitido: <span></span> hotelxxx.com</p>
-        </div>
-    </div>
-</body>
+    </body>
 </html>

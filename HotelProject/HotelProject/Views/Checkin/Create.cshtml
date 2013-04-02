@@ -1,7 +1,7 @@
 ﻿@model HotelProject.Models.checkin
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Novo Check In";
     Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
@@ -66,18 +66,18 @@
 </script>
 
 
-<h2>Create</h2>
+<h2>Novo Check In</h2>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>checkin</legend>
+        <legend></legend>
 
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.cliente_id, "cliente")
+            Cliente
         </div>
         <div class="editor-field">
             @Html.DropDownList("cliente_id", String.Empty)
@@ -85,7 +85,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Previsao)
+            Previsão
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Previsao, "number", "dataPrevisao")
@@ -111,14 +111,14 @@
         </fieldset>
 
         <p>
-            <input type="button" value="Salvar" onclick="salvar()" />
+            <input type="button" value="Cadastrar" onclick="salvar()" />
         </p>
 
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para Lista", "Index")
 </div>
 
 @section Scripts {
