@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HotelProject.Models
 {
@@ -17,6 +18,7 @@ namespace HotelProject.Models
         public string Cpf { get; set; }
         public string Rg { get; set; }
         public System.DateTime DtRegistro { get; set; }
+       [DataType(DataType.Date)]
         public System.DateTime DtNascimento { get; set; }
         public string Sexo { get; set; }
         public string Email { get; set; }
