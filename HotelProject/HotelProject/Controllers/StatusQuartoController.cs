@@ -9,6 +9,7 @@ using HotelProject.Models;
 
 namespace HotelProject.Controllers
 {
+    [Authorize]
     public class StatusQuartoController : Controller
     {
         private HotelDBContext db = new HotelDBContext();

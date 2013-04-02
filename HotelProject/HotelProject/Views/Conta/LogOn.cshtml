@@ -1,0 +1,25 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    
+    <div class="editor-label">
+        @Html.Label("Login: ")
+        @Html.TextBox("login") 
+    </div>
+    <div class="editor-label">
+        @Html.Label("Senha: ")
+        @Html.TextBox("senha")
+    </div>
+    
+        <p>
+            <input type="submit" value="LogOn" class="btn btn-primary"/>
+        </p>
+}
