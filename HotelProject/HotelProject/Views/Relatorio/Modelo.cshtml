@@ -1,4 +1,5 @@
-﻿@model IEnumerable<HotelProject.Models.checkin>
+﻿@using Microsoft.Web.Mvc.Html
+@model IEnumerable<HotelProject.Models.checkin>
 @{
     ViewBag.Title = "Relatório de Quartos";
     Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
@@ -23,7 +24,7 @@
                     <h1>RELATÓRIO DE CHECK-IN REALIZADOS</h1>
                 </div>
                 <div id="unidade">
-                    <h2>HOTEL XXX</h2>
+                    <h2>HOTEL PORTAL</h2>
                     <h3>MEDIANEIRA - PR</h3>
                 </div>
             </div>
@@ -50,8 +51,7 @@
                                 <th>CLIENTE</th>
                                 <th>DATA</th>
                                 <th>DT. SAÍDA</th>
-                                <th>TOTAL R$</th>
-                                <th>QUARTO</th>
+                                <th>TOTAL R$</th>               
                             </tr>
                         </thead>
                         @foreach (var item in Model)
@@ -63,7 +63,6 @@
                                     <td class="bold">@Html.DisplayFor(modelItem => item.Data)</td>
                                     <td class="bold">@Html.DisplayFor(modelItem => item.Saida)</td>
                                     <td class="bold">@Html.DisplayFor(modelItem => item.Valor)</td>
-                                    <td class="bold">@Html.DisplayFor(modelItem => item.quartos)</td>
                                 </tr>
                             </tbody>
                         
@@ -81,7 +80,7 @@
                 </div>
             </div>
             <div id="rodape">
-                <p>Funcionario: <span>@ViewBag.Funcionario</span> Emitido:  @System.DateTime.Now.ToString() hotelxxx.com</p>
+                <p>Funcionario: <span>@ViewBag.Funcionario</span> Emitido:  <span>@System.DateTime.Now.ToString()</span> hotelportal.com</p>
             </div>
         </div>
     </body>

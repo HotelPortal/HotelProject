@@ -2,11 +2,9 @@
 
 
 
-<<<<<<< HEAD
+
 <table class="table table-striped table-bordered table-condensed">
-=======
-<table  class="table table-striped table-bordered table-condensed">
->>>>>>> origin/junto-certo-parte-tiago
+
     <tr>
         <th>Descricao</th>
         <th>Número</th>
@@ -20,13 +18,8 @@
         foreach (var quarto in Model.quartos)
         {
         <tr>
-<<<<<<< HEAD
-            @Html.Hidden("quarto", string.Empty, new { @quartoId = quarto.quarto_Id, @Descricao = quarto.Descricao, @Numero = quarto.Numero, @ValorDia = quarto.ValorDia })
-            <td >@quarto.Descricao</td>
-=======
             @Html.Hidden("quarto", string.Empty, new { @quartoId = quarto.quarto_Id, @Descricao = quarto.Descricao, @Numero = quarto.Numero, @ValorDia = quarto.ValorDia })           
             <td>@quarto.Descricao</td>
->>>>>>> origin/junto-certo-parte-tiago
             <td>@quarto.Numero</td>
             <td>@quarto.ValorDia</td>
             <td><a href='javascript:void(0)' id='remover' onclick="javascript:removerQuarto(@(quarto.quarto_Id));">Remover</a></td>

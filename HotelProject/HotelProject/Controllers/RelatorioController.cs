@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
+using HotelProject.ModeloView;
 using HotelProject.Models;
 
 namespace HotelProject.Controllers
@@ -21,10 +23,12 @@ namespace HotelProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult Modelo(FormCollection f)
+        public ActionResult Modelo(RelatorioModelo modelo)
         {
-            string d1 = f["dataInicio"];
-            string d2 = f["dataFim"];
+
+            var d1 = modelo.DataIni;
+
+            var d2 = modelo.DataFim;
             decimal total = 0;
 
             var login = System.Web.HttpContext.Current.User.Identity.Name;

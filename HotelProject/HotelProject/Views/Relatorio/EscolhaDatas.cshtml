@@ -1,4 +1,4 @@
-﻿@model System.DateTime?
+﻿@model HotelProject.ModeloView.RelatorioModelo
 
 @{
     ViewBag.Title = "Relatório de Check Ins";
@@ -15,13 +15,13 @@
         Data inicial :
     </div>
     <div class="editor-field">
-        @Html.TextBox("dataInicio", "", new { @type = "DateTime", @class = "DateTime"})
+        @Html.EditorFor(c => c.DataIni)
     </div>
     <div class="editor-label">
         Data final :
     </div>
     <div class="editor-field">
-        @Html.TextBox("dataFim")
+        @Html.EditorFor(c => c.DataFim)
  
     </div>
 
