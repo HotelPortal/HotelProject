@@ -13,7 +13,7 @@ namespace BootstrapMvcSample.Controllers
     {
         private static List<HomeInputModel> _models = ModelIntializer.CreateHomeInputModels();
 
-        private HotelDBContext db = new HotelDBContext();
+        private HotelDBContext db = ConnectionHelper.getContextInstance();
 
         public ActionResult Index()
         {

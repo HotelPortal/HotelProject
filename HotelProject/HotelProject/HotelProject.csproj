@@ -153,6 +153,7 @@
     <Compile Include="Models\checkin.cs" />
     <Compile Include="Models\cidade.cs" />
     <Compile Include="Models\cliente.cs" />
+    <Compile Include="Models\ConnectionHelper.cs" />
     <Compile Include="Models\funcionario.cs" />
     <Compile Include="Models\HomeInputModel.cs" />
     <Compile Include="Models\HotelDBContext.cs" />

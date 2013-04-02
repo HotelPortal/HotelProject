@@ -11,7 +11,7 @@ namespace HotelProject.Controllers
     public class ContaController : Controller
     {
 
-        private HotelDBContext db = new HotelDBContext();
+        private HotelDBContext db = ConnectionHelper.getContextInstance();
 
         [HttpGet]
         public ActionResult LogOn()

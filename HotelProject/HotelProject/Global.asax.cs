@@ -17,7 +17,7 @@ namespace HotelProject
     {
         protected void Application_Start()
         {
-            var con = new HotelDBContext();
+            var con = ConnectionHelper.getContextInstance();
 
             con.Database.CreateIfNotExists();
 

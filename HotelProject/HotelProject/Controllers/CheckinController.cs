@@ -15,7 +15,7 @@ namespace HotelProject.Controllers
     [Authorize]
     public class CheckinController : Controller
     {
-        private HotelDBContext db = new HotelDBContext();
+        private HotelDBContext db = ConnectionHelper.getContextInstance();
 
         private List<quarto> quartos = new List<quarto>();
 
