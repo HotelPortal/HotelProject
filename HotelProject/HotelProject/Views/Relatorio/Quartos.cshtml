@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div id="rodape">
-                <p>Funcionario: <span></span> Emitido: @System.DateTime.Now.ToString() hotelxxx.com</p>
+                <p>Funcionario: @System.Web.HttpContext.Current.User.Identity.Name Emitido: @System.DateTime.Now.ToString() hotelxxx.com</p>
             </div>
         </div>
     </body>

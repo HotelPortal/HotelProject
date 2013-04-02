@@ -1,14 +1,14 @@
 ﻿@model HotelProject.Models.checkin
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar CheckIn";
     Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
 <script type="text/javascript">
     var Items = new Object();
     Items.quartos = new Array();
-
+    
 
 
     function salvar() {
@@ -65,17 +65,17 @@
         }
 </script>
 
-<h2>Edit</h2>
+<h2>Editar</h2>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>checkin</legend>
+        <legend></legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.checkin_Id)
+            ID
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.checkin_Id)
@@ -83,7 +83,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.cliente_id, "cliente")
+            Cliente
         </div>
         <div class="editor-field">
             @Html.DropDownList("cliente_id", String.Empty)
@@ -91,7 +91,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.funcionario_Id, "funcionario")
+            Funcionário
         </div>
         <div class="editor-field">
             @Html.DropDownList("funcionario_Id", String.Empty)
@@ -99,7 +99,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Data)
+           Data CheckIn
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Data)
@@ -107,7 +107,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Previsao)
+            Previsão de Dias
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Previsao)
@@ -115,7 +115,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Saida)
+            Data CheckOut
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Saida)
@@ -129,7 +129,7 @@
                 @Html.DropDownList("quarto_id", String.Empty)
             </div>
             <p>
-                <input type="button" value="Adicionar" onclick="adicionarQuarto()" />
+                <input class="btn btn-primary btn-small" type="button" value="Adicionar" onclick="adicionarQuarto()" />
             </p>
 
             <div id="GridQuarto">
@@ -150,14 +150,14 @@
         </fieldset>
 
         <p>
-            <input type="button" value="Salvar" onclick="salvar()" />
+            <input class="btn btn-primary" type="button" value="Salvar" onclick="salvar()" />
         </p>
 
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para Lista", "Index")
 </div>
 
 @section Scripts {

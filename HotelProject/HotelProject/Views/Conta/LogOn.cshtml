@@ -1,25 +1,34 @@
 ﻿@model dynamic
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Login";
+    Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
 
 }
 
-<h2>Login</h2>
-
+@*"LogOn", "Conta", FormMethod.Post, new { @class = "form-signin" })*@
 @using (Html.BeginForm())
-{
-    
-    <div class="editor-label">
-        @Html.Label("Login: ")
-        @Html.TextBox("login") 
-    </div>
-    <div class="editor-label">
-        @Html.Label("Senha: ")
-        @Html.TextBox("senha")
-    </div>
-    
+    {
+        <h2>Logue-se por favor</h2>
+        <div class="editor-label">
+            @Html.Label("Login: ")
+            @Html.TextBox("login") 
+        </div>
+        <div class="editor-label">
+            @Html.Label("Senha: ")
+            @Html.Password("senha")
+        </div>
         <p>
-            <input type="submit" value="LogOn" class="btn btn-primary"/>
+            <input type="submit" value="Entrar" class="btn btn-large btn-primary"/>
         </p>
-}
+    }
+
+
+@*<form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="text" class="input-block-level" placeholder="Email address">
+        <input type="password" class="input-block-level" placeholder="Password">
+        <p>
+            <input type="submit" value="Entrar" class="btn btn-large btn-primary"/>
+        </p>
+      </form>*@
