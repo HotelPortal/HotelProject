@@ -23,6 +23,17 @@ namespace HotelProject.Controllers
             return View(clientes.ToList());
         }
 
+
+        [HttpPost]
+        public ActionResult Busca(FormCollection f)
+        {
+            var nome = f["nome"];
+            var clientes = db.clientes.Where(c => c.Nome.Contains(nome));
+            return View(clientes.ToList());
+        }
+
+
+
         //
         // GET: /Cliente/Details/5
 

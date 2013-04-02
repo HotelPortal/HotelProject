@@ -338,6 +338,7 @@
     <Content Include="Views\Relatorio\Quartos.cshtml" />
     <Content Include="Views\Relatorio\StatusQuarto.cshtml" />
     <Content Include="Views\Conta\LogOn.cshtml" />
+    <Content Include="Views\Cliente\Busca.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

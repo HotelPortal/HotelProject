@@ -22,9 +22,12 @@
                     <span class="icon-bar"></span>
                 </a>
                 <a class="brand" href="~/home" title="change in _bootstrapLayout.basic.cshtml">Home</a>
-                <form class="navbar-search pull-right" >
-                    <input type="text" class="search-query" placeholder="Pesquisar Cliente" >
-                </form>
+                
+                @using (Html.BeginForm("Busca", "Cliente", FormMethod.Post, new { @class = "navbar-search pull-right" }))
+                {
+                    <input id="nome" name="nome"  type="text" class="search-query" placeholder="Pesquisar Cliente" >
+
+                }
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         @Html.Navigation()               

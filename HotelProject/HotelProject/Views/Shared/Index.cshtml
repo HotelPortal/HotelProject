@@ -1,60 +1,85 @@
-@using BootstrapSupport
-@model System.Collections.IEnumerable   
+@model IEnumerable<HotelProject.Models.checkin>
+
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Check Ins";
     Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
-<h4>Hotel portal <small>Seja Bem-Vindo</small></h4>
-<table class="table table-striped">
-    <caption></caption>
-    <thead>
-        <tr>
-            @foreach (var property in Model.VisibleProperties())
-            {
-                <th>
-                    @property.GetLabel().ToSeparatedWords()
-                </th>
-            }
-            <th></th>
-        </tr>
-    </thead>
-    @{ int index = 0; }
-    @foreach (var model in Model)
-    {
-        ViewData[index.ToString()] = model;
-        <tr>
-            @foreach (var property in model.VisibleProperties())
-            {
-                <td>
-                    @Html.Display(index + "." + property.Name)
-                </td>                    
-            }
-            <td>
-                <div class="btn-group">
-                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                        Action
+
+<h2>Check Ins</h2>
+
+<p>
+    @Html.ActionLink("Novo CheckIn +", "Create")
+</p>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+           Data Registro
+        </th>
+        <th>
+            Previsão Saída
+        </th>
+        <th>
+            Saída
+        </th>
+        <th>
+            Valor
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.checkin_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Previsao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Saida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @* @Html.ActionLink("Edit", "Edit", new { id=item.checkin_Id  }) |
+            @Html.ActionLink("Details", "Details", new { id=item.checkin_Id  }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.checkin_Id  })*@
+            
+            <div class="btn-group">
+                    <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#">
+                        Ação
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
+                 
+                        <li>@Html.ActionLink("Detalhar", "Details", new { id=item.checkin_Id })</li>
+                        <li class="divider"></li>
+                  
                         @{
-                            @Html.TryPartial("_actions", model)                            
-                            var routevalues = model.GetIdValue();  
-                            <li>@Html.ActionLink("Edit", "Edit", routevalues)</li>
-                            <li>@Html.ActionLink("Details", "Details", routevalues)</li>
-                            <li class="divider"></li>
-                            <li>@Html.ActionLink("Delete", "Delete", routevalues)</li>
-                               
+                          if (item.Saida == null)
+                          {
+                              <li>@Html.ActionLink("CheckOut", "ChechOut", new {  id=item.checkin_Id })</li>
+                          }
+                             
                         }
-                    </ul>
-                </div>
 
-            </td>
-        </tr>
-            index++;
-    }
+                    </ul>
+             </div>
+        </td>
+    </tr>
+}
 
 </table>
-<p>
-    @Html.ActionLink("Create New", "Create", null, new {@class = "btn"})
-</p>
-
