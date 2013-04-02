@@ -42,6 +42,21 @@ namespace HotelProject.Controllers
             return View(checkin);
         }
 
+
+        //
+        // GET: /Checkin/Details/5
+
+        public ActionResult ChekinsPorCliente(long id = 0)
+        {
+            var checkin = db.checkins.Where(c => c.cliente.cliente_id.Equals(id));
+
+            var lista = checkin.ToList();
+
+            return View(lista);
+        }
+
+
+
         //
         // GET: /Checkin/Create
 
@@ -193,7 +208,7 @@ namespace HotelProject.Controllers
                 db.SaveChanges();
 
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
 

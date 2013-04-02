@@ -1,14 +1,14 @@
-@model IEnumerable<HotelProject.Models.checkin>
+Ôªø@model IEnumerable<HotelProject.Models.checkin>
 
 @{
-    ViewBag.Title = "Check Ins";
+    ViewBag.Title = "Check Ins por Cliente";
     Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
 }
 
-<h2>Check Ins</h2>
+<h2>Check Ins por Cliente</h2>
 
 <p>
-    @Html.ActionLink("Novo CheckIn +", "Create", "Checkin")
+    @Html.ActionLink("Novo CheckIn +", "Create")
 </p>
 <table class="table table-striped table-bordered">
     <tr>
@@ -22,10 +22,10 @@
            Data Registro
         </th>
         <th>
-            Previs„o SaÌda
+            Previs√£o Sa√≠da
         </th>
         <th>
-            SaÌda
+            Sa√≠da
         </th>
         <th>
             Valor
@@ -54,24 +54,21 @@
             @Html.DisplayFor(modelItem => item.Valor)
         </td>
         <td>
-            @* @Html.ActionLink("Edit", "Edit", new { id=item.checkin_Id  }) |
-            @Html.ActionLink("Details", "Details", new { id=item.checkin_Id  }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.checkin_Id  })*@
             
             <div class="btn-group">
                     <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#">
-                        AÁ„o
+                        A√ß√£o
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                  
-                        <li>@Html.ActionLink("Detalhar", "Details","Checkin", new { id=item.checkin_Id }, "")</li>
+                        <li>@Html.ActionLink("Detalhar", "Details", new { id=item.checkin_Id })</li>
                         <li class="divider"></li>
                   
                         @{
                           if (item.Saida == null)
                           {
-                              <li>@Html.ActionLink("CheckOut", "ChechOut","Checkin", new {  id=item.checkin_Id }, "")</li>
+                              <li>@Html.ActionLink("CheckOut", "ChechOut", new {  id=item.checkin_Id })</li>
                           }
                              
                         }

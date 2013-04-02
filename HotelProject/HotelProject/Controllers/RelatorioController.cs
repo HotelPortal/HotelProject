@@ -15,22 +15,48 @@ namespace HotelProject.Controllers
 
         public ActionResult Modelo()
         {
-            string d1 = "10/02/2013";
-            string d2 = "20/04/2013";
+
+
+            return View("EscolhaDatas");
+        }
+
+        [HttpPost]
+        public ActionResult Modelo(FormCollection f)
+        {
+            string d1 = f["dataInicio"];
+            string d2 = f["dataFim"];
             decimal total = 0;
+
+            var login = System.Web.HttpContext.Current.User.Identity.Name;
+
+            var funcionariologado = db.funcionarios.Single(c => c.Login == login);
+
+            ViewBag.Funcionario = funcionariologado.Nome;
+            ViewBag.DataInicio = d1;
+            ViewBag.DataFim = d2;
+
             IEnumerable<checkin> resultados = db.checkins;
             IEnumerable<checkin> realizados = (resultados.Where(resultado => resultado.Data >= Convert.ToDateTime(d1) && resultado.Data <= Convert.ToDateTime(d2)));
             foreach (var realizado in realizados)
             {
-                    total = total+(decimal) realizado.Valor;
+                total = total + (decimal)realizado.Valor;
             }
             Session["total"] = total;
 
             return View(realizados);
         }
 
+
+
         public ActionResult Quartos()
         {
+
+            var login = System.Web.HttpContext.Current.User.Identity.Name;
+
+            var funcionariologado = db.funcionarios.Single(c => c.Login == login);
+
+            ViewBag.Funcionario = funcionariologado.Nome;
+
             IEnumerable<quarto> quartos = db.quartos;
             IEnumerable<status_quarto> statusQuartos = db.status_quarto;
             IEnumerable<quarto> result = (from quarto in quartos from statusQuarto in statusQuartos where quarto.status_Id == statusQuarto.status_Id && statusQuarto.FlAlugavel.Equals(true) select quarto);

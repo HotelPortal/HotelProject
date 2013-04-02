@@ -87,6 +87,8 @@
                         <li>@Html.ActionLink("Editar", "Edit", new {  id=item.cliente_id })</li>
                         <li>@Html.ActionLink("Detalhar", "Details", new { id=item.cliente_id  })</li>
                         <li class="divider"></li>
+                        <li>@Html.ActionLink("Checkins", "ChekinsPorCliente", "Checkin", new {  id=item.cliente_id}, null )</li>
+
                         <li>@Html.ActionLink("Deletar", "Delete", new {  id=item.cliente_id  })</li>
                     </ul>
              </div>

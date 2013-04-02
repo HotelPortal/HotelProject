@@ -1,0 +1,64 @@
+﻿@model System.DateTime?
+
+@{
+    ViewBag.Title = "Relatório de Check Ins";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <legend>Range do relatório</legend>
+    
+    <div class="editor-label">
+        Data inicial :
+    </div>
+    <div class="editor-field">
+        @Html.TextBox("dataInicio", "", new { @type = "DateTime", @class = "DateTime"})
+    </div>
+    <div class="editor-label">
+        Data final :
+    </div>
+    <div class="editor-field">
+        @Html.TextBox("dataFim")
+ 
+    </div>
+
+    <p>
+        <input type="submit" value="Gerar relatorio" class="btn btn-primary" />
+    </p>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -31,7 +31,7 @@
                 <div class="linha">
                     <p>
                         FUNCIONÁRIO:<br />
-                        <span class="bold"></span>
+                        <span class="bold">@ViewBag.Funcionario</span>
                     </p>
                 </div>
                 <div class="linha">
@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div id="rodape">
-                <p>Funcionario: <span></span> Emitido: @System.DateTime.Now.ToString() hotelxxx.com</p>
+                <p>Funcionario: <span>@ViewBag.Funcionario</span> Emitido: @System.DateTime.Now.ToString() hotelxxx.com</p>
             </div>
         </div>
     </body>

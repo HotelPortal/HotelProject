@@ -31,15 +31,15 @@
                 <div class="linha">
                     <p>
                         DATA INICIAL:<br />
-                        <span>10/02/2013</span>
+                        <span>@ViewBag.DataInicio</span>
                     </p>
                     <p>
                         DATA FINAL:<br />
-                        <span>03/04/2013</span>
+                        <span>@ViewBag.DataFim</span>
                     </p>
                     <p>
                         FUNCIONÁRIO:<br />
-                        <span class="bold"></span>
+                        <span class="bold">@ViewBag.Funcionario</span>
                     </p>
                 </div>
                 <div class="linha">
@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div id="rodape">
-                <p>Funcionario: <span></span> Emitido:  @System.DateTime.Now.ToString() hotelxxx.com</p>
+                <p>Funcionario: <span>@ViewBag.Funcionario</span> Emitido:  @System.DateTime.Now.ToString() hotelxxx.com</p>
             </div>
         </div>
     </body>

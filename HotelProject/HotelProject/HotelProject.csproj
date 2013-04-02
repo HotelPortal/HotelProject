@@ -339,6 +339,9 @@
     <Content Include="Views\Relatorio\StatusQuarto.cshtml" />
     <Content Include="Views\Conta\LogOn.cshtml" />
     <Content Include="Views\Cliente\Busca.cshtml" />
+    <Content Include="Views\Relatorio\EscolhaDatas.cshtml" />
+    <Content Include="Views\Checkin\ChekinsPorCliente.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
