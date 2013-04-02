@@ -12,7 +12,7 @@ namespace HotelProject.Controllers
     [Authorize]
     public class FuncionarioController : Controller
     {
-        private HotelDBContext db = new HotelDBContext();
+        private HotelDBContext db = ConnectionHelper.getContextInstance();
 
         //
         // GET: /Funcionario/

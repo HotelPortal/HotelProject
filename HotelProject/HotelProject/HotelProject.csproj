@@ -135,12 +135,10 @@
     <Compile Include="BootstrapSupport\HtmlHelpers\GlyphIcons.cs" />
     <Compile Include="BootstrapSupport\HtmlHelpers\Paging.cs" />
     <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
-    <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\CheckinController.cs" />
     <Compile Include="Controllers\CidadeController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
-    <Compile Include="Controllers\ExampleLayoutsController.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuartoController.cs" />
@@ -153,6 +151,7 @@
     <Compile Include="Models\checkin.cs" />
     <Compile Include="Models\cidade.cs" />
     <Compile Include="Models\cliente.cs" />
+    <Compile Include="Models\ConnectionHelper.cs" />
     <Compile Include="Models\funcionario.cs" />
     <Compile Include="Models\HomeInputModel.cs" />
     <Compile Include="Models\HotelDBContext.cs" />

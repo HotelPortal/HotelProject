@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -20,6 +21,7 @@ namespace HotelProject
             var con = new HotelDBContext();
 
             con.Database.CreateIfNotExists();
+            if (con.Database.Connection.State == ConnectionState.Open);
 
             AreaRegistration.RegisterAllAreas();
 
