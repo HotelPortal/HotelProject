@@ -8,8 +8,10 @@ using System.Web.Mvc;
 using HotelProject.Models;
 using Newtonsoft.Json;
 
+
 namespace HotelProject.Controllers
 {
+    [Authorize]
     public class CheckinController : Controller
     {
         private HotelDBContext db = new HotelDBContext();
@@ -42,6 +44,7 @@ namespace HotelProject.Controllers
         //
         // GET: /Checkin/Create
 
+        
         public ActionResult Create()
         {
             ViewBag.cliente_id = new SelectList(db.clientes, "cliente_id", "Nome");
