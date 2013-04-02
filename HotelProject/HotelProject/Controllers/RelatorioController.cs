@@ -13,7 +13,7 @@ namespace HotelProject.Controllers
     {
 
 
-        private HotelDBContext db = ConnectionHelper.getContextInstance();
+        private HotelDBContext db = new HotelDBContext();
 
         public ActionResult Modelo()
         {
