@@ -35,9 +35,10 @@ namespace HotelProject.Models
             modelBuilder.Configurations.Add(new status_quartoMap());
         }
 
-        public bool IsDisposed { get; private set; }
+        public bool IsDisposed { get; set; }
         protected override void Dispose(bool disposing)
         {
+          
             IsDisposed = true;
         }
     }

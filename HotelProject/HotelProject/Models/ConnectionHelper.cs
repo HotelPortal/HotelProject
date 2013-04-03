@@ -22,11 +22,12 @@ namespace HotelProject.Models
 
                 if (con.IsDisposed)
                 {
-                    con.Database.Connection.Open();
+                   con = new HotelDBContext();
+       
                 }
             }
 
-            return con;
+            return con ;
         }
 
     }
