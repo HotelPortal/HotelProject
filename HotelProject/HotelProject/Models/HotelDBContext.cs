@@ -9,11 +9,13 @@ namespace HotelProject.Models
         static HotelDBContext()
         {
             Database.SetInitializer<HotelDBContext>(null);
+            
         }
 
         public HotelDBContext()
             : base("Name=HotelDBContext")
         {
+            IsDisposed = false;
         }
 
         public DbSet<checkin> checkins { get; set; }
@@ -31,6 +33,12 @@ namespace HotelProject.Models
             modelBuilder.Configurations.Add(new funcionarioMap());
             modelBuilder.Configurations.Add(new quartoMap());
             modelBuilder.Configurations.Add(new status_quartoMap());
+        }
+
+        public bool IsDisposed { get; private set; }
+        protected override void Dispose(bool disposing)
+        {
+            IsDisposed = true;
         }
     }
 }

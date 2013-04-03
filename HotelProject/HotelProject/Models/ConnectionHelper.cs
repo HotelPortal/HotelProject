@@ -19,7 +19,8 @@ namespace HotelProject.Models
             }
             else
             {
-                if (con.Database.Connection.State == ConnectionState.Closed)
+
+                if (con.IsDisposed)
                 {
                     con.Database.Connection.Open();
                 }
